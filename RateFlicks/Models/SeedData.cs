@@ -27,7 +27,7 @@ namespace RateFlicks.Models
                         ReleaseDate = DateTime.Parse("1989-2-12"),
                         Genre = "Romantic Comedy",
                         Price = 7.99M,
-                        Rating = "R"
+                        Rating = "4"
                     },
 
                     new Movie
@@ -36,7 +36,7 @@ namespace RateFlicks.Models
                         ReleaseDate = DateTime.Parse("1984-3-13"),
                         Genre = "Comedy",
                         Price = 8.99M,
-                        Rating = "M"
+                        Rating = "7"
                     },
 
                     new Movie
@@ -45,7 +45,7 @@ namespace RateFlicks.Models
                         ReleaseDate = DateTime.Parse("1986-2-23"),
                         Genre = "Comedy",
                         Price = 9.99M,
-                        Rating = "M"
+                        Rating = "8"
                     },
 
                     new Movie
@@ -54,7 +54,7 @@ namespace RateFlicks.Models
                         ReleaseDate = DateTime.Parse("1959-4-15"),
                         Genre = "Western",
                         Price = 3.99M,
-                        Rating = "G"
+                        Rating = "5"
                     }
                 );
                 context.SaveChanges();
