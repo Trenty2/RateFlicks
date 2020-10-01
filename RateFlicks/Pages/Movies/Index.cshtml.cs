@@ -27,6 +27,10 @@ namespace RateFlicks.Pages.Movies
         [BindProperty(SupportsGet = true)]
         public string MovieGenre { get; set; }
 
+        // Requires using Microsoft.AspNetCore.Mvc.Rendering;
+        public SelectList Ratings { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string MovieRating { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -34,6 +38,10 @@ namespace RateFlicks.Pages.Movies
             IQueryable<string> genreQuery = from m in _context.Movie
                 orderby m.Genre
                 select m.Genre;
+            // Use LINQ to get list of Ratings.
+            IQueryable<string> ratingQuery = from m in _context.Movie
+                orderby m.Rating
+                select m.Rating;
 
             var movies = from m in _context.Movie
                 select m;
@@ -47,8 +55,14 @@ namespace RateFlicks.Pages.Movies
                 movies = movies.Where(x => x.Genre == MovieGenre);
             }
 
+            if (!string.IsNullOrEmpty(MovieRating))
+            {
+                movies = movies.Where(x => x.Rating == MovieRating);
+            }
+
 
             Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+            Ratings = new SelectList(await ratingQuery.Distinct().ToListAsync());
             Movie = await movies.ToListAsync();
         }
     }
